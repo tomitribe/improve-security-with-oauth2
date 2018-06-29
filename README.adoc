@@ -7,6 +7,21 @@
 :leveloffset: 1
 
 = Improve Security with OAuth 2.0
+Time: 12 minutes
+
+Learning objectives
+
+* What are OAuth 2.0 and JWT.
+* Create the Client Account
+* Creata a route with OAuth 2.0 authentication.
+* Test the route with OAuth 2.0 to validate the permission.
+
+Prerequisites
+
+* Docker installed and the daemon is running on your computer.
+* Internet connection.
+* Curl installed on your computer.
+
 
 == Start demo microservice
 
