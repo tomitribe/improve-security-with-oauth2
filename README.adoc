@@ -63,10 +63,14 @@ If this is the first time you run TAG, open a terminal execute the following com
 system:
     
 For linux:
-`docker run --net="host" -de LICENSE=accept --name tag -p 8080:8080 tomitribe/tribestream-api-gateway`
+```
+docker run --net="host" -de LICENSE=accept --name tag -p 8080:8080 tomitribe/tribestream-api-gateway
+```
 
 For OSX:
-`docker run -de LICENSE=accept --name tag -p 8080:8080  tomitribe/tribestream-api-gateway`
+```
+docker run -de LICENSE=accept --name tag -p 8080:8080  tomitribe/tribestream-api-gateway`
+```
 
 To see the TAG starting process log you can execute the following command:
 ```
