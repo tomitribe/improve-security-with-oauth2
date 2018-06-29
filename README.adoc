@@ -80,6 +80,16 @@ INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["
 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 ms
 ```
 
+== What is OAuth 2.0
+OAuth is an open standard for authorization that enables client applications to access server resources on behalf of a specific Resource Owner which also enables the owner to authorize limited third-party access to their server resources without sharing their credentials. 
+
+Tribestream API Gateway can be used to apply this authorization.  The Server issues tokens to client applications on behalf of a Resource Owner for which will be able to use it authenticating subsequent API calls to the endpoint. So the protected endpoints can accept or respond to protected resource requests using access tokens. 
+
+== What is JSON Web Token (JWT)
+A JWT is a JSON-based security token encoding that enables identity and security information to be shared across security domains.
+
+OAuth access tokens are used to grant access to specific resources for a specific period of time. It will enable users to grant third-party applications access to their endpoints without sharing all data and access permissions.
+
 == Login into TAG
 
 Open a browser and navigate to: `http://localhost:8080/tag`
