@@ -1,0 +1,111 @@
+= Improve Security with OAuth 2.0
+
+== Start demo microservice
+
+We can reuse the ENDPOINT docker container we created from the Tribe quickstart guide. To start TAG execute the following command:
+```
+docker start endpoint
+```
+
+If this is the first time you run ENDPOINT, open a terminal execute the following command according to your operating 
+system:
+```
+docker run -e MSG=BLACK -d -p 9090:9090 --name endpoint  tomitribedev/sample-endpoint
+```
+
+We can validate that our microservice is up and running by executing the following command: 
+```
+curl -i http://localhost:9090/color
+```
+You should be able to see the color microservice output:
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 5
+ETag: W/"5-qUFKsEwr2rIea20TZiihh+Dfqkw"
+Date: Thu, 21 Jun 2018 15:28:20 GMT
+Connection: keep-alive
+
+BLACK
+```
+
+== Run Tribestream API Gateway
+
+We can reuse the TAG docker container we created from the Tribe quickstart guide. To start TAG execute the following command:
+```
+docker start tag
+```
+If this is the first time you run TAG, open a terminal execute the following command according to your operating 
+system:
+    
+For linux:
+`docker run --net="host" -de LICENSE=accept --name tag -p 8080:8080 tomitribe/tribestream-api-gateway`
+
+For OSX:
+`docker run -de LICENSE=accept --name tag -p 8080:8080  tomitribe/tribestream-api-gateway`
+
+To see the TAG starting process log you can execute the following command:
+```
+docker logs -f tag
+```
+
+```
+TAG is complete ready when you see the following message on the TAG log:
+INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-bio-8080"]
+INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-bio-8009"]
+INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 ms
+```
+
+== Login into TAG
+
+Open a browser and navigate to: `http://localhost:8080/tag`
+
+Login into the TAG dashboard using the following credentials: username:admin, password:admin
+
+IMAGE_1
+
+== Create the Client account
+To create the client account we are going to use to authenticate and authorize the deployed microservices, follow the next steps:
+Click on the `Accounts` option to navigate to _Accounts Page_, click the _Plus button_ on the upper right side and select _Account_. Create a new Account with the following data and make sure you enable the Create another check box before clicking the Save button.
+
+IMAGE_2
+
+From the Accounts page, click on _client id_ account to open the account detail page. To create the accounts ANA and BOB, please look the step 4 from TAG Quickstart(need to put the link for quickstart).
+
+IMAGE_3, IMAGE_4
+
+Click the `…` button on the upper right side and select `Add Client Secret` from the menu. In the Add Client Secret modal window, type `tomitribe` as the client secret, select the profile `OAuth2 Profile` and then click the Save button.
+
+IMAGE_5
+
+== Create a route to use the Oauth2 Security Profile
+
+From the Dashboard page, Click on the `Routes` option to navigate to Routes Page. Click the Plus button on the upper right side and select `MOD_REWRITE ROUTE`
+
+IMAGE_6
+
+For MOD_REWRITE textarea put:
+
+For Linux: `RewriteRule ^/oauth2-endpoint$ http://localhost:9090/color/ [P,NE,auth]`
+
+For OSX: `RewriteRule ^/oauth2-endpoint$ http://host.docker.internal:9090/color/ [P,NE,auth]`
+
+For Security Profile select: Oauth2 Profile and for roles use: Administrator. 
+
+== Calling the endpoint
+We can test the behavior of the TAG configuration directly from the Route screen. Click the `…` button and select Test. This will open the Test Routes screen. In the Test Routes screen set the Resource URL to `/oauth2-endpoint`.
+
+IMAGE_7
+
+Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `ana` with the password `tomitribe`. For the Client Id add `clientid` with Client Secret `tomitribe`.
+
+IMAGE_8
+
+When done, hit the `Test` button. If everything was set up correctly, you should get a 200 OK in the Response from Tribestream Gatway in Result Section.
+
+IMAGE_9
+
+If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `tomitribe`. For the Client Id add `clientid` with Client Secret `tomitribe`.
+
+IMAGE_10
