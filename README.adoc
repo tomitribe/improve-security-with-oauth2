@@ -63,7 +63,7 @@ Open a browser and navigate to: `http://localhost:8080/tag`
 
 Login into the TAG dashboard using the following credentials: username: `admin`, password: `admin`
 
-IMAGE_1
+image::image_1.png["", 600,409 ]
 
 == Create the Client account
 To create the client account we are going to use to authenticate and authorize the deployed microservices, follow the next steps:
