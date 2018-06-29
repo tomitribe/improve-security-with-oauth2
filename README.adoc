@@ -1,3 +1,11 @@
+:encoding: UTF-8
+:linkattrs:
+:sectlink:
+:sectanchors:
+:sectid:
+:imagesdir: media
+:leveloffset: 1
+
 = Improve Security with OAuth 2.0
 
 == Start demo microservice
@@ -63,27 +71,27 @@ Open a browser and navigate to: `http://localhost:8080/tag`
 
 Login into the TAG dashboard using the following credentials: username: `admin`, password: `admin`
 
-image::image_1.png["", 600,409 ]
+image::login.gif["", 600,409 ]
 
 == Create the Client account
 To create the client account we are going to use to authenticate and authorize the deployed microservices, follow the next steps:
 Click on the `Accounts` option to navigate to _Accounts Page_, click the _Plus button_ on the upper right side and select _Account_. Create a new Account with the following data and make sure you enable the Create another check box before clicking the Save button.
 
-IMAGE_2
+image::create-client-account.png["", 600,409]
 
 From the Accounts page, click on _client id_ account to open the account detail page. To create the accounts ANA and BOB, please look the step 4 from TAG Quickstart(need to put the link for quickstart).
 
-IMAGE_3, IMAGE_4
+image::account-list.png["",600,409]
 
 Click the `…` button on the upper right side and select `Add Client Secret` from the menu. In the Add Client Secret modal window, type `tomitribe` as the client secret, select the profile `OAuth2 Profile` and then click the Save button.
 
-IMAGE_5
+image::add-client-secret.png["",600,409]
 
 == Create a route to use the Oauth2 Security Profile
 
 From the Dashboard page, Click on the `Routes` option to navigate to Routes Page. Click the Plus button on the upper right side and select `MOD_REWRITE ROUTE`
 
-IMAGE_6
+image::create-route.png["",600,409]
 
 For MOD_REWRITE textarea put:
 
@@ -96,16 +104,16 @@ For Security Profile select: Oauth2 Profile and for roles use: Administrator.
 == Calling the endpoint
 We can test the behavior of the TAG configuration directly from the Route screen. Click the `…` button and select Test. This will open the Test Routes screen. In the Test Routes screen set the Resource URL to `/oauth2-endpoint`.
 
-IMAGE_7
+iamge::test-window.png["",600,409]
 
 Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `ana` with the password `tomitribe`. For the Client Id add `clientid` with Client Secret `tomitribe`.
 
-IMAGE_8
+image::test-window-with-oauth2.png["",600,409]
 
 When done, hit the `Test` button. If everything was set up correctly, you should get a 200 OK in the Response from Tribestream Gatway in Result Section.
 
-IMAGE_9
+image::test-window-with-oauth2-200.png["",600,409]
 
 If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `tomitribe`. For the Client Id add `clientid` with Client Secret `tomitribe`.
 
-IMAGE_10
+image::test-window-with-oauth2-403.png["",600,409]
