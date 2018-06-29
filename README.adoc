@@ -61,7 +61,7 @@ INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 m
 
 Open a browser and navigate to: `http://localhost:8080/tag`
 
-Login into the TAG dashboard using the following credentials: username:admin, password:admin
+Login into the TAG dashboard using the following credentials: username: `admin`, password: `admin`
 
 IMAGE_1
 
