@@ -124,9 +124,15 @@ image::create-route.png["",600,409]
 
 For MOD_REWRITE textarea put:
 
-For Linux: `RewriteRule ^/oauth2-endpoint$ http://localhost:9090/color/ [P,NE,auth]`
+For Linux: 
+```
+RewriteRule ^/oauth2-endpoint$ http://localhost:9090/color/ [P,NE,auth]
+```
 
-For OSX: `RewriteRule ^/oauth2-endpoint$ http://host.docker.internal:9090/color/ [P,NE,auth]`
+For OSX: 
+```
+RewriteRule ^/oauth2-endpoint$ http://host.docker.internal:9090/color/ [P,NE,auth]
+```
 
 For Security Profile select: Oauth2 Profile and for roles use: Administrator. 
 
