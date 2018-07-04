@@ -108,7 +108,7 @@ Click on the `Accounts` option to navigate to _Accounts Page_, click the _Plus b
 
 image::create-client-account.png["", 600,409]
 
-From the Accounts page, click on _client id_ account to open the account detail page. To create the accounts ANA and BOB, please look the step 4 from TAG Quickstart(need to put the link for quickstart).
+From the Accounts page, click on `movieapp` account to open the account detail page. To create the accounts ANA and BOB, please look the step 4 from link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[TAG Quickstart].
 
 image::account-list.png["",600,409]
 
@@ -120,7 +120,7 @@ image::add-client-secret.png["",600,409]
 
 From the Dashboard page, Click on the `Routes` option to navigate to Routes Page. Click the Plus button on the upper right side and select `MOD_REWRITE ROUTE`
 
-image::create-route.png["",600,409]
+image::create-route.png["",800,600]
 
 For MOD_REWRITE textarea put:
 
@@ -139,9 +139,9 @@ For Security Profile select: Oauth2 Profile and for roles use: Administrator.
 == Calling the endpoint
 We can test the behavior of the TAG configuration directly from the Route screen. Click the `…` button and select Test. This will open the Test Routes screen. In the Test Routes screen set the Resource URL to `/oauth2-endpoint`.
 
-iamge::test-window.png["",600,409]
+image::test-window.png["",600,409]
 
-Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `ana` with the password `tomitribe`. For the Client Id add `clientid` with Client Secret `tomitribe`.
+Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `ana` with the password `tomitribe`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
 
 image::test-window-with-oauth2.png["",600,409]
 
@@ -149,6 +149,6 @@ When done, hit the `Test` button. If everything was set up correctly, you should
 
 image::test-window-with-oauth2-200.png["",600,409]
 
-If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `tomitribe`. For the Client Id add `clientid` with Client Secret `tomitribe`.
+If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `tomitribe`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
 
 image::test-window-with-oauth2-403.png["",600,409]
