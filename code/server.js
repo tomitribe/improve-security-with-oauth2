@@ -1,8 +1,5 @@
 'use strict';
-
 const express = require('express');
-
-//const result = '[{"comments":[],"year":2008,"director":"Sylvester Stallone","genre":"Action","rating":7,"id":2,"title":"John Rambo"},{"comments":[],"year":1999,"director":"The Wachowski Brothers","genre":"Sci-Fi","rating":9,"id":1,"title":"The Matrix"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genre":"Sci-Fi","rating":7,"id":3,"title":"Starship Troopers"},{"comments":[],"year":1994,"director":"Roland Emmerich","genre":"Sci-Fi","rating":7,"id":4,"title":"Stargate"}]'
 
 class Movie {
   constructor (comments, year, director, genrer, rating, id, title) {
