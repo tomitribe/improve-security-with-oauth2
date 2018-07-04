@@ -127,12 +127,12 @@ For MOD_REWRITE textarea put:
 
 For Linux: 
 ```
-RewriteRule ^/oauth2-endpoint$ http://localhost:9090/movie-api$1 [P,NE,auth]
+RewriteRule "^/oauth2-endpoint(.*)$" "http://localhost:9090/movie-api/api/movies$1" [P,NE,auth]
 ```
 
 For OSX: 
 ```
-RewriteRule ^/oauth2-endpoint$ http://host.docker.internal:9090/movie-api$1 [P,NE,auth]
+RewriteRule "^/oauth2-endpoint(.*)$" http://host.docker.internal:9090/movie-api/api/movies$1 [P,NE,auth]
 ```
 
 For Security Profile select: Oauth2 Profile and for roles use: Administrator. 
