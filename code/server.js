@@ -38,27 +38,27 @@ app.get('/movie-api/api/language', (req, res) => {
   res.json(`${LANG}`);
 });
 
-app.get('/movie-api/api//movies/:id', (req,res) => {
+app.get('/movie-api/api/movies/:id', (req,res) => {
   res.json('/movies/' + req.params.id);
 })
 
-app.get('/movie-api/api//movies/genres', (req, res) => {
+app.get('/movie-api/api/movies/genres', (req, res) => {
   res.json('/movies/genres');
 });
 
-app.post('/movie-api/api//movies', (req, res) => {
+app.post('/movie-api/api/movies', (req, res) => {
   res.json('/movies');
 });
 
-app.put('/movie-api/api//movies/:id', (req, res) => {
+app.put('/movie-api/api/movies/:id', (req, res) => {
   res.send('/movies/' + req.params.id);
 });
 
-app.delete('/movie-api/api//movies/:id', (req, res) => {
+app.delete('/movie-api/api/movies/:id', (req, res) => {
   res.json('/movies/' + req.params.id);
 });
 
-app.get('/movie-api/api//movies/count', (req, res) => {
+app.get('/movie-api/api/movies/count', (req, res) => {
   res.json('/movies/count');
 });
 
