@@ -109,7 +109,7 @@ Click on the `Accounts` option to navigate to _Accounts Page_, click the _Plus b
 
 image::create-client-account.png["", 600,409]
 
-From the Accounts page, click on `movieapp` account to open the account detail page. To create the accounts ANA and BOB, please look the step 4 from link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[TAG Quickstart].
+From the Accounts page, click on `movieapp` account to open the account detail page. To create the accounts ANA and BOB, please look the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[step 4] from link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart].
 
 image::account-list.png["",600,409]
 
