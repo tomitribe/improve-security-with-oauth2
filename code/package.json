@@ -1,0 +1,13 @@
+{
+  "name": "endpoint",
+  "version": "1.0.0",
+  "description": "Endpoint sample",
+  "author": "Daniel Cunha <dcunha@tomitribe.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
