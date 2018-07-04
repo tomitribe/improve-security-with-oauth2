@@ -33,24 +33,25 @@ docker start endpoint
 If this is the first time you run ENDPOINT, open a terminal execute the following command according to your operating 
 system:
 ```
-docker run -e MSG=BLACK -d -p 9090:9090 --name endpoint  tomitribedev/sample-endpoint
+docker run -d -p 9090:9090 --name movie-api  tomitribedev/movie-api
 ```
 
 We can validate that our microservice is up and running by executing the following command: 
 ```
-curl -i http://localhost:9090/color
+curl -i http://localhost:9090/movie-api/api/movies
 ```
-You should be able to see the color microservice output:
+You should be able to see the movie-api microservice output:
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
-Content-Type: text/html; charset=utf-8
-Content-Length: 5
-ETag: W/"5-qUFKsEwr2rIea20TZiihh+Dfqkw"
-Date: Thu, 21 Jun 2018 15:28:20 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 907
+ETag: W/"38b-nH1wH3YovzhC6d7xYfLwUga8Hf8"
+Date: Wed, 04 Jul 2018 11:16:42 GMT
 Connection: keep-alive
 
-BLACK
+[{"comments":[],"year":2008,"director":"Sylvester Stallone","genrer":"Action","rating":7,"id":2,"title":"John Rambo"},{"comments":[],"year":2008,"director":"Sylvester Stallone","genrer":"Action","rating":7,"id":52,"title":"John
+Rambo"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9,"id":1,"title":"The Matrix"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9,"id":51,"title":"The Matrix"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genrer":"Sci-Fi","rating":7,"id":3,"title":"Starship Troopers"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genrer":"Sci-Fi","rating":7,"id":53,"title":"Starship Troopers"},{"comments":[],"year":1994,"director":"Roland Emmerich","genrer":"Sci-Fi","rating":7,"id":4,"title":"Stargate"},{"comments":[],"year":1994,"director":"Roland Emmerich","genrer":"Sci-Fi","rating":7,"id":54,"title":"Stargate"}]%
 ```
 
 == Run Tribestream API Gateway
@@ -126,12 +127,12 @@ For MOD_REWRITE textarea put:
 
 For Linux: 
 ```
-RewriteRule ^/oauth2-endpoint$ http://localhost:9090/color/ [P,NE,auth]
+RewriteRule ^/oauth2-endpoint$ http://localhost:9090/movie-api$1 [P,NE,auth]
 ```
 
 For OSX: 
 ```
-RewriteRule ^/oauth2-endpoint$ http://host.docker.internal:9090/color/ [P,NE,auth]
+RewriteRule ^/oauth2-endpoint$ http://host.docker.internal:9090/movie-api$1 [P,NE,auth]
 ```
 
 For Security Profile select: Oauth2 Profile and for roles use: Administrator. 
