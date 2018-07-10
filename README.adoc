@@ -147,3 +147,17 @@ image::test-window-with-oauth2-200.png["",600,409]
 If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `tomitribe`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
 
 image::test-window-with-oauth2-403.png["",600,409]
+
+== Stop Tribestream API Gateway
+
+Since both the TAG and the microservice were created with a specific container name, you can now stop both containers, 
+from the command line execute the following command.
+
+Stopping TAG
+```
+docker stop tag
+```
+
+Stopping the microservice
+```
+docker stop movie-api
