@@ -22,7 +22,7 @@ Prerequisites
 * Curl installed on your computer.
 
 
-== Start demo microservice
+== Start Demo Microservice
 
 We can reuse the ENDPOINT docker container we created from the Tribe quickstart guide. To start TAG execute the following command:
 ```
@@ -148,7 +148,7 @@ If you try call the endpoint with Bob user, it should returns a 403, that’s be
 
 image::test-window-with-oauth2-403.png["",600,409]
 
-== Stop Tribestream API Gateway
+== Stop Tribestream API Gateway and Demo Microservice
 
 Since both the TAG and the microservice were created with a specific container name, you can now stop both containers, 
 from the command line execute the following command.
