@@ -6,8 +6,8 @@
 :imagesdir: media
 :leveloffset: 1
 
-= Improve Security with OAuth 2.0
-Time: 12 minutes
+= Secure Microservices with OAuth 2.0 and JWT
+Time: 10 minutes
 
 Learning objectives
 
@@ -19,7 +19,6 @@ Learning objectives
 Prerequisites
 
 * Docker installed and the daemon is running on your computer.
-* Internet connection.
 * Curl installed on your computer.
 
 
@@ -65,17 +64,12 @@ system:
     
 For linux:
 ```
-docker run --net="host" -de LICENSE=accept --name tag -p 8080:8080 tomitribe/tribestream-api-gateway
+docker run --net="host" -e LICENSE=accept --name tag -p 8080:8080 tomitribe/tribestream-api-gateway
 ```
 
 For OSX:
 ```
-docker run -de LICENSE=accept --name tag -p 8080:8080  tomitribe/tribestream-api-gateway`
-```
-
-To see the TAG starting process log you can execute the following command:
-```
-docker logs -f tag
+docker run -e LICENSE=accept --name tag -p 8080:8080  tomitribe/tribestream-api-gateway`
 ```
 
 ```
