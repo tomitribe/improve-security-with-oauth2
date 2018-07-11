@@ -103,13 +103,24 @@ Click on the `Accounts` option to navigate to _Accounts Page_, click the _Plus b
 
 image::create-client-account.png["", 600,409]
 
-From the Accounts page, click on `movieapp` account to open the account detail page. To create the accounts ALICE and BOB, please look the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[step 4] from link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart].
+From the Accounts page, click on `movieapp` account to open the account detail page. 
 
 image::account-list.png["",600,409]
 
 Click the `…` button on the upper right side and select `Add Client Secret` from the menu. In the Add Client Secret modal window, type `tomitribe` as the client secret, select the profile `OAuth2 Profile` and then click the Save button.
 
 image::add-client-secret.png["",600,409]
+
+To create the accounts ALICE and BOB, please look the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[step 4] from link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart] or just execute the follow curl commands:
+
+```
+curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "bob","email": "bob@email.com","displayName": "Bob","roles": [{"displayName": "user","name": "user","id": "user"}],"credentials": {"password": {"active": true,"value": "superpassword","createdDate": "2018-04-29T20:22:01Z"}}}'
+
+```
+```
+curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "alice","email": "alice@email.com","displayName": "Alice","roles": [{"displayName": "administrator","name": "administrator","id": "usadministrator"}],"credentials": {"password": {"active": true,"value": "supersecret","createdDate": "2018-04-29T20:22:01Z"}}}'
+
+```
 
 == Create a route to use the Oauth2 Security Profile
 
