@@ -24,12 +24,12 @@ Prerequisites
 
 == Start Demo Microservice
 
-We can reuse the ENDPOINT docker container we created from the Tribe quickstart guide. To start TAG execute the following command:
+We can reuse the movie-api docker container we created from the Tribestream quickstart guide. To start movie-api execute the following command:
 ```
-docker start endpoint
+docker start movie-api
 ```
 
-If this is the first time you run ENDPOINT, open a terminal execute the following command according to your operating 
+If this is the first time you run movie-api, open a terminal execute the following command according to your operating 
 system:
 ```
 docker run -d -p 9090:9090 --name movie-api  tomitribedev/movie-api
@@ -55,7 +55,7 @@ Rambo"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9
 
 == Run Tribestream API Gateway
 
-We can reuse the TAG docker container we created from the Tribe quickstart guide. To start TAG execute the following command:
+We can reuse the TAG docker container we created from the Tribestream quickstart guide. To start TAG execute the following command:
 ```
 docker start tag
 ```
