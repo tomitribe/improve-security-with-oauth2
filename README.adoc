@@ -136,7 +136,7 @@ We can test the behavior of the TAG configuration directly from the Route screen
 
 image::test-window.png["",600,409]
 
-Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `ana` with the password `tomitribe`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
+Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `alice` with the password `supersecret`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
 
 image::test-window-with-oauth2.png["",600,409]
 
@@ -144,7 +144,7 @@ When done, hit the `Test` button. If everything was set up correctly, you should
 
 image::test-window-with-oauth2-200.png["",600,409]
 
-If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `tomitribe`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
+If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `superpassword`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
 
 image::test-window-with-oauth2-403.png["",600,409]
 
