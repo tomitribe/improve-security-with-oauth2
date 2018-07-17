@@ -123,15 +123,16 @@ image::create-client-account.png[""]
 
 After clicking _Save_ you will be redirected to a page with all the movieapp account information.
 
-Add a Client Secret with the following steps:
+Add a Client Secret with the following steps: +
 * Click the _…_
 * Select _Add Client Secret_ on the menu
 
-Use the following data in the _Add Client Secret_ window:
+Use the following data in the _Add Client Secret_ window: +
 * New Client Secret: _tomitribe_
 * Re-type: _tomitribe_
 * OAuth Security Profile: _OAuth2 Profile_
 * Click _Save_
+
 
 image::add-client-secret.png[""]
 
