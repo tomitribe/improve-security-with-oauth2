@@ -9,36 +9,39 @@
 = Secure Microservices with OAuth 2.0 and JWT
 Time: 10 minutes
 
-Learning objectives
+== Learning objectives
 
-* What are OAuth 2.0 and JWT.
-* Create the Client Account
-* Creata a route with OAuth 2.0 authentication.
-* Test the route with OAuth 2.0 to validate the permission.
+* OAuth 2.0
+* JSON Web Tokens (JWT)
+* How to secure a microservice
+* Authorization using roles
 
-Prerequisites
+== Prerequisites
 
-* Docker installed and the daemon is running on your computer.
-* Curl installed on your computer.
+* Docker installed and running.
+* Curl installed.
 
 
-== Start Demo Microservice
+== Start the Demo Microservice
 
-We can reuse the movie-api docker container we created from the Tribestream quickstart guide. To start movie-api execute the following command:
+If you went through the _Tribestream Quickstart Guide_ you can reuse the _movie-api_ docker container. To start the movie-api execute the following command:
 ```
 docker start movie-api
 ```
 
-If this is the first time you run movie-api, open a terminal execute the following command according to your operating 
-system:
+However, if this is the first time you hear about the `movie-api`, open the terminal and execute the following command.
+
+
 ```
 docker run -d -p 9090:9090 --name movie-api  tomitribedev/movie-api
 ```
 
-We can validate that our microservice is up and running by executing the following command: 
+You can validate that the microservice is up and running by executing the command below:
+
 ```
 curl -i http://localhost:9090/movie-api/api/movies
 ```
+
 You should be able to see the movie-api microservice output:
 ```
 HTTP/1.1 200 OK
@@ -53,15 +56,16 @@ Connection: keep-alive
 Rambo"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9,"id":1,"title":"The Matrix"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9,"id":51,"title":"The Matrix"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genrer":"Sci-Fi","rating":7,"id":3,"title":"Starship Troopers"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genrer":"Sci-Fi","rating":7,"id":53,"title":"Starship Troopers"},{"comments":[],"year":1994,"director":"Roland Emmerich","genrer":"Sci-Fi","rating":7,"id":4,"title":"Stargate"},{"comments":[],"year":1994,"director":"Roland Emmerich","genrer":"Sci-Fi","rating":7,"id":54,"title":"Stargate"}]%
 ```
 
-== Run Tribestream API Gateway
+== Run the Tribestream API Gateway (TAG)
 
-We can reuse the TAG docker container we created from the Tribestream quickstart guide. To start TAG execute the following command:
+If you went through the _Tribestream Quickstart Guide_ you can reuse the _TAG_ docker container. To start TAG execute the following command:
+
 ```
 docker start tag
 ```
-If this is the first time you run TAG, open a terminal execute the following command according to your operating 
-system:
-    
+
+However, if this is the first time you run TAG, open the terminal and execute the following command.
+
 For linux:
 ```
 docker run --net="host" -e LICENSE=accept --name tag -p 8080:8080 tomitribe/tribestream-api-gateway
@@ -72,103 +76,100 @@ For OSX:
 docker run -e LICENSE=accept --name tag -p 8080:8080  tomitribe/tribestream-api-gateway`
 ```
 
+TAG is ready when you see the following message in the logs:
 ```
-TAG is complete ready when you see the following message on the TAG log:
 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-bio-8080"]
 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["ajp-bio-8009"]
 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 ms
 ```
 
 == What is OAuth 2.0
-OAuth is an open standard for authorization that enables client applications to access server resources on behalf of a specific Resource Owner which also enables the owner to authorize limited third-party access to their server resources without sharing their credentials. 
+OAuth is an open standard for authorization that enables client applications to access server resources on behalf of a specific Resource Owner which also enables the owner to authorize limited third-party access to their server resources without sharing their credentials.
 
-Tribestream API Gateway can be used to apply this authorization.  The Server issues tokens to client applications on behalf of a Resource Owner for which will be able to use it authenticating subsequent API calls to the endpoint. So the protected endpoints can accept or respond to protected resource requests using access tokens. 
+The Tribestream API Gateway will help you to easily configure OAuth2 to protect your microservices. TAG issues tokens for the client applications on behalf of a Resource Owner, these tokens added to the request can be used to access the protected microservices.
 
 == What is JSON Web Token (JWT)
-A JWT is a JSON-based security token encoding that enables identity and security information to be shared across security domains.
+JSON Web Token is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 
-OAuth access tokens are used to grant access to specific resources for a specific period of time. It will enable users to grant third-party applications access to their endpoints without sharing all data and access permissions.
+TAG emits the access tokens using the JWT format. The emitted tokens will have all the claims with the necessary information like roles, groups, expiration date and others, so TAG can authorize or deny access to a microservice.
 
-== Login into TAG
+== How to secure a microservice
 
-Open a browser and navigate to: `http://localhost:8080/tag`
+Open a browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
 
-Login into the TAG dashboard using the following credentials: username: `admin`, password: `admin`
+Login into the TAG dashboard using username: _admin_, password: _admin_.
 
-image::login.gif["", 600,409 ]
+image::login.gif[""]
 
-== Create the Client account
-To create the client account we are going to use to authenticate and authorize the deployed microservices, follow the next steps:
-Click on the `Accounts` option to navigate to _Accounts Page_, click the _Plus button_ on the upper right side and select _Account_. Create a new Account with the following data and make sure you enable the Create another check box before clicking the Save button.
+=== Client Account
 
-image::create-client-account.png["", 600,409]
+Create the client account you are going to use, follow the next steps:
 
-From the Accounts page, click on `movieapp` account to open the account detail page. 
+Click on the _Accounts_ option to navigate to _Accounts Page_, click the _Plus button_ (+) on the upper right side and select _Account_. Create a new Account with the following data and make sure to enable the _Create another_ check box before clicking _Save_.
+
+image::create-client-account.png[""]
+
+From the _Accounts_ page, click on `movieapp` account to open the account detail page.
 
 image::account-list.png["",600,409]
 
-Click the `…` button on the upper right side and select `Add Client Secret` from the menu. In the Add Client Secret modal window, type `tomitribe` as the client secret, select the profile `OAuth2 Profile` and then click the Save button.
+Click the _…_ button on the upper right side and select _Add Client Secret_ on the menu. In the modal window, type _tomitribe_ as the client secret, select the profile _OAuth2 Profile_ and then click _Save_.
 
-image::add-client-secret.png["",600,409]
+image::add-client-secret.png[""]
 
-To create the accounts ALICE and BOB, please look the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[step 4] from link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart] or just execute the follow curl commands:
-
-```
-curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "bob","email": "bob@email.com","displayName": "Bob","roles": [{"displayName": "user","name": "user","id": "user"}],"credentials": {"password": {"active": true,"value": "superpassword","createdDate": "2018-04-29T20:22:01Z"}}}'
+To create the accounts _Alice_ and _Bob_, please look on link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[Step 4,window="_blank"] from the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart, window="_blank"] or just execute the follow curl commands:
 
 ```
 ```
-curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "alice","email": "alice@email.com","displayName": "Alice","roles": [{"displayName": "administrator","name": "administrator","id": "usadministrator"}],"credentials": {"password": {"active": true,"value": "supersecret","createdDate": "2018-04-29T20:22:01Z"}}}'
+curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "bob","email": "bob@email.com","displayName": "Bob","roles": [{"displayName": "user","name": "user","id": "user"}],"credentials": {"password": {"active": true,"value": "superpassword"}}}'
+```
+curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "alice","email": "alice@email.com","displayName": "Alice","roles": [{"displayName": "administrator","name": "administrator","id": "usadministrator"}],"credentials": {"password": {"active": true,"value": "supersecret"}}}'
 
 ```
 
-== Create a route to use the Oauth2 Security Profile
+=== Create a Route with the OAuth2 Security Profile
 
-From the Dashboard page, Click on the `Routes` option to navigate to Routes Page. Click the Plus button on the upper right side and select `MOD_REWRITE ROUTE`
+From the Dashboard page, Click on the _Routes_ option to navigate to the Routes Page. Click the _Plus button_(+) on the upper right side and select _MOD_REWRITE ROUTE_.
 
 image::create-route.png["",800,600]
 
-For MOD_REWRITE textarea put:
+Add the MOD_REWRITE description below.
 
-For Linux: 
+For Linux:
 ```
-RewriteRule "^/oauth2-endpoint(.*)$" "http://localhost:9090/movie-api/api/movies$1" [P,NE,auth]
-```
-
-For OSX: 
-```
-RewriteRule "^/oauth2-endpoint(.*)$" http://host.docker.internal:9090/movie-api/api/movies$1 [P,NE,auth]
+RewriteRule "^/movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
 ```
 
-For Security Profile select: Oauth2 Profile and for roles use: Administrator. 
+For OSX:
+```
+RewriteRule "^/movies$" http://host.docker.internal:9090/movie-api/api/movies [P,NE,auth]
+```
 
-== Calling the endpoint
-We can test the behavior of the TAG configuration directly from the Route screen. Click the `…` button and select Test. This will open the Test Routes screen. In the Test Routes screen set the Resource URL to `/oauth2-endpoint`.
+On the Security Profiles field, select OAuth2 Profile and add _Administrator_ in the roles field.
 
-image::test-window.png["",600,409]
+After clicking _Save_ you will be on the page of your created route. You now have a route _/movies_ secured with OAuth2 and only calls from accounts with the role _Administrator_ will be proxied to the movies microservice.
 
-Add OAuth Authentication clicking in `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add for the Username `alice` with the password `supersecret`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
+== Calling Movies Microservice
+You can test the behavior of the TAG configuration directly from the Route screen. Click the _…_ button and select _Test_. This will open the _Test Routes_ screen. Set the Resource URL to _/movies_.
 
-image::test-window-with-oauth2.png["",600,409]
+image::test-window.png[""]
 
-When done, hit the `Test` button. If everything was set up correctly, you should get a 200 OK in the Response from Tribestream Gatway in Result Section.
+Add OAuth2 Authentication clicking on `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add Username _alice_ and password _supersecret_. Also, for the _Client Id_ add _movieapp_ with _Client Secret_ `tomitribe`.
 
-image::test-window-with-oauth2-200.png["",600,409]
+image::test-window-with-oauth2.png[""]
 
-If you try call the endpoint with Bob user, it should returns a 403, that’s because bob does not have permission to call the endpoint, just user with role Administratos is able to call it, so on the OAuth2 section add for the Username `bob` with the password `superpassword`. For the Client Id add `movieapp` with Client Secret `tomitribe`.
+After that click on the `Test` button. If everything was set up correctly, you should get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /movies route successfully.
 
-image::test-window-with-oauth2-403.png["",600,409]
+image::test-window-with-oauth2-200.png[""]
 
-== Stop Tribestream API Gateway and Demo Microservice
+If you try call the endpoint with username _bob_, password _superpassword_ instead of _alice_, it should return a _403_ because _bob_ doesn't have the role _Administrator_.
 
-Since both the TAG and the microservice were created with a specific container name, you can now stop both containers, 
-from the command line execute the following command.
+image::test-window-with-oauth2-403.png[""]
 
-Stopping TAG
+== Stop the Docker containers
+
+After executing this tutorial stop all docker images so it does not overload your computer.
 ```
 docker stop tag
-```
-
-Stopping the microservice
-```
 docker stop movie-api
+```
