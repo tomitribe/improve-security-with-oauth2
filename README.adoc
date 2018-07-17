@@ -24,7 +24,7 @@ Time: 10 minutes
 
 == Run Docker Containers
 
-Before digging into OAuth2 and JWT using TAG you need start the docker images of ElasticSearch and Kibana, TAG and the Movie-Api app.
+Before digging into OAuth2 using TAG you need start the docker images of ElasticSearch and Kibana, TAG and the Movie-Api app.
 
 === Start the Movies Microservice
 
@@ -88,18 +88,18 @@ INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 m
 ```
 
 == What is OAuth 2.0
-OAuth is an open standard for authorization that enables client applications to access server resources on behalf of a specific Resource Owner which also enables the owner to authorize limited third-party access to their server resources without sharing their credentials.
+OAuth2 is an open standard for authorization that enables client applications to access server resources on behalf of a specific Resource Owner which also enables the owner to authorize limited third-party access to their server resources without sharing their credentials.
 
 The Tribestream API Gateway will help you to easily configure OAuth2 to protect your microservices. TAG issues tokens for the client applications on behalf of a Resource Owner, these tokens added to the request can be used to access the protected microservices.
 
 == What is JSON Web Token (JWT)
 JSON Web Token is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 
-TAG emits the access tokens using the JWT format. The emitted tokens will have all the claims with the necessary information like roles, groups, expiration date and others, so TAG can authorize or deny access to a microservice.
+TAG emits the access tokens using the JWT format. The emitted tokens will have all the claims with the necessary information like roles, groups, expiration date and others, thus TAG can authorize or deny access to a microservice.
 
-== How to secure a microservice
+== How to secure a microservice with the Tribestream API Gateway (TAG)
 
-Open a browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
+Open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
 
 Login into the TAG dashboard using username: _admin_, password: _admin_.
 
@@ -107,15 +107,22 @@ image::login.gif[""]
 
 === Client Account
 
-Create the client account you are going to use, follow the next steps:
+Create the client account you are going to use, following the steps below:
 
-Click on the _Accounts_ option to navigate to _Accounts Page_, click the _Plus button_ (+) on the upper right side and select _Account_. Create a new Account with the following data and make sure to enable the _Create another_ check box before clicking _Save_.
+* Click on the _Accounts_
+* Navigate to _Accounts Page_
+* Click the _Plus button_ (+) on the upper right side
+* Select _Account_
+
+Create a new Account with the following data:
+
+* Username: _movieapp_
+* Email: _movieapp@email.com_
+* Full Name: Movie App Client
 
 image::create-client-account.png[""]
 
-From the _Accounts_ page, click on `movieapp` account to open the account detail page.
-
-image::account-list.png["",600,409]
+After clicking _Save_ you will be redirected to a page with all the movieapp account information.
 
 Click the _…_ button on the upper right side and select _Add Client Secret_ on the menu. In the modal window, type _tomitribe_ as the client secret, select the profile _OAuth2 Profile_ and then click _Save_.
 
