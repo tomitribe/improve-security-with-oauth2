@@ -105,7 +105,7 @@ Login into the TAG dashboard using username: _admin_, password: _admin_.
 
 image::login.gif[""]
 
-=== Client Account
+=== Create a Client Account
 
 Create the client account you are going to use, following the steps below:
 
@@ -137,21 +137,20 @@ Use the following data in the _Add Client Secret_ window: +
 
 image::add-client-secret.png[""]
 
-To create the accounts _Alice_ and _Bob_, please look on link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[Step 4,window="_blank"] from the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart, window="_blank"] or just execute the follow curl commands:
+To create the accounts _Alice_ and _Bob_, please look on link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[Step 4,window="_blank"] from the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart, window="_blank"] or just execute the follow curl commands that will use the TAG Rest API to create it for you:
 
-```
 ```
 curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "bob","email": "bob@email.com","displayName": "Bob","roles": [{"displayName": "user","name": "user","id": "user"}],"credentials": {"password": {"active": true,"value": "superpassword"}}}'
 ```
+```
 curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "alice","email": "alice@email.com","displayName": "Alice","roles": [{"displayName": "administrator","name": "administrator","id": "usadministrator"}],"credentials": {"password": {"active": true,"value": "supersecret"}}}'
-
 ```
 
 === Create a Route with the OAuth2 Security Profile
 
 From the Dashboard page, Click on the _Routes_ option to navigate to the Routes Page. Click the _Plus button_(+) on the upper right side and select _MOD_REWRITE ROUTE_.
 
-image::create-route.png["",800,600]
+image::create-route.png[""]
 
 Add the MOD_REWRITE description below.
 
