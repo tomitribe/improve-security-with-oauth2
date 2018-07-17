@@ -115,9 +115,9 @@ Create the client account you are going to use, following the steps below:
 
 Create a new Account with the following data:
 
-* Username: _movieapp_
-* Email: _movieapp@email.com_
-* Full Name: Movie App Client
+* *Username*: _movieapp_
+* *Email*: _movieapp@email.com_
+* *Full Name*: _Movie App Client_
 
 image::create-client-account.png[""]
 
@@ -130,9 +130,9 @@ Add a Client Secret with the following steps: +
 
 Use the following data in the _Add Client Secret_ window: +
 
-* New Client Secret: _tomitribe_
-* Re-type: _tomitribe_
-* OAuth Security Profile: _OAuth2 Profile_
+* *New Client Secret*: _tomitribe_
+* *Re-type*: _tomitribe_
+* *OAuth Security Profile*: _OAuth2 Profile_
 * Click _Save_
 
 image::add-client-secret.png[""]
@@ -162,8 +162,8 @@ RewriteRule "^/movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
 ```
 PS: If you are using OSX as the operating system, replace _localhost_ for _host.docker.internal_.
 
-* Security Profiles: _OAuth2 Profile_
-* Roles: _Administrator_
+* *Security Profiles*: _OAuth2 Profile_
+* *Roles*: _Administrator_
 
 image::create-route.png[""]
 
@@ -184,14 +184,14 @@ Add OAuth2 Authentication with the following steps:
 * Click on `…` button
 * Select `Add OAuth 2.0`
 * Scroll down to the OAuth2 section
-* Fill Username with _alice_
-* Fill Password with _supersecret_
-* Fill Client Id with _movieapp_
-* Fill Client Secret with _tomitribe_
+* Fill *Username* with _alice_
+* Fill *Password* with _supersecret_
+* Fill *Client Id* with _movieapp_
+* Fill *Client Secret* with _tomitribe_
 
 image::test-window-with-oauth2.png[""]
 
-After that click _Test_. If everything was set up correctly, you should get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /movies route successfully.
+After that click _Test_. If everything was set up correctly, you will get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /movies route successfully.
 
 image::test-window-with-oauth2-200.png[""]
 
