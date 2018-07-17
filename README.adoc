@@ -179,11 +179,19 @@ This will open the _Test Routes_ screen, thus set the *Resource URL* to _/movies
 
 image::test-window.png[""]
 
-Add OAuth2 Authentication clicking on `…` button and select the `Add OAuth 2.0` option. Scroll down to the OAuth2 section and add Username _alice_ and password _supersecret_. Also, for the _Client Id_ add _movieapp_ with _Client Secret_ `tomitribe`.
+Add OAuth2 Authentication with the following steps:
+
+* Click on `…` button
+* Select `Add OAuth 2.0`
+* Scroll down to the OAuth2 section
+* Fill Username with _alice_
+* Fill Password with _supersecret_
+* Fill Client Id with _movieapp_
+* Fill Client Secret with _tomitribe_
 
 image::test-window-with-oauth2.png[""]
 
-After that click on the `Test` button. If everything was set up correctly, you should get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /movies route successfully.
+After that click _Test_. If everything was set up correctly, you should get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /movies route successfully.
 
 image::test-window-with-oauth2-200.png[""]
 
