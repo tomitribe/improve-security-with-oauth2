@@ -99,7 +99,9 @@ TAG emits the access tokens using the JWT format. The emitted tokens will have a
 
 == How to secure a microservice with the Tribestream API Gateway (TAG)
 
-Open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
+Let's imagine you as a TAG Administrator have to give access to a Movie Streaming Website, and this website will consume a movies microservice to therefore get the catalog of movies.
+
+First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
 
 Login into the TAG dashboard using username: _admin_, password: _admin_.
 
@@ -107,21 +109,21 @@ image::login.gif[""]
 
 === Create a Client Account
 
-Create the client account you are going to use, following the steps below:
+Create the client account the Streaming Website is going to use, following the steps below:
 
 * Click on the _Accounts_
 * Click the _Plus button_ (+)
 * Select _Account_
 
-Create a new Account with the following data:
+Fill the Account information with the following data:
 
-* *Username*: _movieapp_
-* *Email*: _movieapp@email.com_
-* *Full Name*: _Movie App Client_
+* *Username*: _streaming-website_
+* *Email*: _streaming-website@email.com_
+* *Full Name*: _Streaming Website_
 
 image::create-client-account.png[""]
 
-After clicking _Save_ you will be redirected to a page with all the movieapp account information.
+After clicking _Save_ you will be redirected to a page with all the _streaming-website_ account information.
 
 Add a Client Secret with the following steps: +
 
@@ -130,23 +132,36 @@ Add a Client Secret with the following steps: +
 
 Use the following data in the _Add Client Secret_ window: +
 
-* *New Client Secret*: _tomitribe_
-* *Re-type*: _tomitribe_
+* *New Client Secret*: _12345678_
+* *Re-type*: _12345678_
 * *OAuth Security Profile*: _OAuth2 Profile_
 * Click _Save_
 
 image::add-client-secret.png[""]
 
-To create the accounts _Alice_ and _Bob_, please look on link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[Step 4,window="_blank"] from the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart, window="_blank"] or just execute the follow curl commands that will use the TAG Rest API to create them for you:
+You also need to create a user for the Streaming Website owner.
 
-```
-curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "bob","email": "bob@email.com","displayName": "Bob","roles": [{"displayName": "user","name": "user","id": "user"}],"credentials": {"password": {"active": true,"value": "superpassword"}}}'
-```
-```
-curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "alice","email": "alice@email.com","displayName": "Alice","roles": [{"displayName": "administrator","name": "administrator","id": "usadministrator"}],"credentials": {"password": {"active": true,"value": "supersecret"}}}'
-```
+* Go back to the _Accounts_
+* Click the _Plus button_ (+)
+* Select _Account_
+
+Fill the Account information with the following data:
+
+* *Username*: _Alice_
+* *Email*: _alice@email.com_
+* *Full Name*: _Alice_
+* *Roles*: _Streaming-App-Owner_
+
+You will be redirected to the Account page with Alice's information.
+
+* Click _..._
+* Select Add password
+* Type password _abcde123_
+* Click _Save_
 
 === Create a Route with the OAuth2 Security Profile
+
+Now let's create a secured OAuth2 route to the Microservice Movies a give access only to users that have the _Streaming-App-Owner_ role.
 
 On the Dashboard page execute the following steps:
 
@@ -158,24 +173,25 @@ Then fill the form with the following data:
 
 * Add the MOD_REWRITE description below
 ```
-RewriteRule "^/movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
+RewriteRule "^/streaming-movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
 ```
+
 PS: If you are using OSX as the operating system, replace _localhost_ for _host.docker.internal_.
 
 * *Security Profiles*: _OAuth2 Profile_
-* *Roles*: _Administrator_
+* *Roles*: _Streaming-App-Owner_
 
 image::create-route.png[""]
 
-After clicking _Save_ you will be on the page of your created route. You now have a route _/movies_ secured with OAuth2 and only calls from accounts with the role _Administrator_ will be proxied to the movies microservice.
+After clicking _Save_ you will be on the page of your created route. You now have a route _/streaming-movies_ secured with OAuth2 and only calls from accounts with the role _Streaming-App-Owner_ will be proxied to the movies microservice.
 
-== Calling the Movies Microservice
+== Calling the Streaming Movies Route
 You can test the behavior of the TAG configuration directly from the Route screen.
 
-* Click the _…_ button
-* Select _Test_
+* Click _..._
+* Click _Test_
 
-This will open the _Test Routes_ screen, thus set the *Resource URL* to _/movies_.
+This will open the _Test Routes_ screen, thus set the *Resource URL* to _/streaming-movies_.
 
 image::test-window.png[""]
 
@@ -185,17 +201,17 @@ Add OAuth2 Authentication with the following steps:
 * Select `Add OAuth 2.0`
 * Scroll down to the OAuth2 section
 * Fill *Username* with _alice_
-* Fill *Password* with _supersecret_
-* Fill *Client Id* with _movieapp_
-* Fill *Client Secret* with _tomitribe_
+* Fill *Password* with _abcde123_
+* Fill *Client Id* with _streaming-website_
+* Fill *Client Secret* with _12345678_
 
 image::test-window-with-oauth2.png[""]
 
-After that click _Test_. If everything was set up correctly, you will get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /movies route successfully.
+After that click _Test_. If everything was set up correctly, you will get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /streaming-movies route successfully.
 
 image::test-window-with-oauth2-200.png[""]
 
-If you try call the endpoint with username _bob_, password _superpassword_ instead of _alice_, it should return a _403_ because _bob_ doesn't have the role _Administrator_.
+If you remove the _Streaming-App-Owner_ role from Alice, you will see that the route will deny the request because the user doesn't have the required role to access the route.
 
 image::test-window-with-oauth2-403.png[""]
 
