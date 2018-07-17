@@ -137,7 +137,7 @@ Use the following data in the _Add Client Secret_ window: +
 
 image::add-client-secret.png[""]
 
-To create the accounts _Alice_ and _Bob_, please look on link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[Step 4,window="_blank"] from the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart, window="_blank"] or just execute the follow curl commands that will use the TAG Rest API to create it for you:
+To create the accounts _Alice_ and _Bob_, please look on link:https://tribestream.io/guide/en/api-gateway/quickstart/master/#_4_secure_your_microservice[Step 4,window="_blank"] from the link:https://tribestream.io/guide/en/api-gateway/quickstart/master/[TAG Quickstart, window="_blank"] or just execute the follow curl commands that will use the TAG Rest API to create them for you:
 
 ```
 curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'accept: application/json' --header 'authorization: Basic YWRtaW46YWRtaW4=' --header 'cache-control: no-cache' --header 'content-type: application/json' -d '{"username": "bob","email": "bob@email.com","displayName": "Bob","roles": [{"displayName": "user","name": "user","id": "user"}],"credentials": {"password": {"active": true,"value": "superpassword"}}}'
@@ -148,28 +148,34 @@ curl -v -X POST http://localhost:8080/tag/api/account/ --insecure --header 'acce
 
 === Create a Route with the OAuth2 Security Profile
 
-From the Dashboard page, Click on the _Routes_ option to navigate to the Routes Page. Click the _Plus button_(+) on the upper right side and select _MOD_REWRITE ROUTE_.
+On the Dashboard page execute the following steps:
 
-image::create-route.png[""]
+* Click on the _Routes_
+* Click the _Plus button_(+)
+* Select _MOD_REWRITE ROUTE_
 
-Add the MOD_REWRITE description below.
+Then fill the form with the following data:
 
-For Linux:
+* Add the MOD_REWRITE description below
 ```
 RewriteRule "^/movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
 ```
+PS: If you are using OSX as the operating system, replace _localhost_ for _host.docker.internal_.
 
-For OSX:
-```
-RewriteRule "^/movies$" http://host.docker.internal:9090/movie-api/api/movies [P,NE,auth]
-```
+* Security Profiles: _OAuth2 Profile_
+* Roles: _Administrator_
 
-On the Security Profiles field, select OAuth2 Profile and add _Administrator_ in the roles field.
+image::create-route.png[""]
 
 After clicking _Save_ you will be on the page of your created route. You now have a route _/movies_ secured with OAuth2 and only calls from accounts with the role _Administrator_ will be proxied to the movies microservice.
 
-== Calling Movies Microservice
-You can test the behavior of the TAG configuration directly from the Route screen. Click the _…_ button and select _Test_. This will open the _Test Routes_ screen. Set the Resource URL to _/movies_.
+== Calling the Movies Microservice
+You can test the behavior of the TAG configuration directly from the Route screen.
+
+* Click the _…_ button
+* Select _Test_
+
+This will open the _Test Routes_ screen, thus set the *Resource URL* to _/movies_.
 
 image::test-window.png[""]
 
