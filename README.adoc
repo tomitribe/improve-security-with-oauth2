@@ -86,14 +86,14 @@ INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["
 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 ms
 ```
 
-== What is OAuth 2.0
+== What is OAuth 2.0?
 OAuth 2.0 is an authorization framework that enables a third-party application to obtain limited access to an HTTP service.
 
 The Tribestream API Gateway will help you to easily configure OAuth2 to protect your microservices using the OAuth2 Profile. TAG will authenticate you using your credentials to issue an access token. This token can be used to call a protected route that will have access to the back end microservice.
 
 image::OAuth2.png[""]
 
-== What is JSON Web Token (JWT)
+== What is JSON Web Token (JWT)?
 JSON Web Token is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 
 TAG emits the access tokens using the JWT format. The emitted token is a base64 hash of a JSON that has a header, a payload with the claims and the signature to make sure the token was not modified. TAG will receive the JWT access tokens to authorize incoming requests to existing routes.
