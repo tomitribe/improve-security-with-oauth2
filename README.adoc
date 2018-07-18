@@ -100,15 +100,15 @@ TAG emits the access tokens using the JWT format. The emitted tokens will have a
 
 To learn how to do it let's go through the following scenario:
 
-_As a streaming application owner, I want populate my Movie Streaming Website with a movies catalog, so users can have access to all the movies we can stream. This catalog is exclusive for USA and cannot be shared with other countries._
+_My name is John and as a streaming application owner, I want populate my Movie Streaming Website with a movies catalog, so users can have access to all the movies we can stream. This catalog is exclusive for USA and cannot be shared with other countries._
 
 _You as a TAG Administrator need to protected an existing Movie Catalog Microservice, this microservice must be available only for USA and accessible for the Movie Streaming Website._
 
-First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"]. Login into the TAG dashboard using *username*: _admin_, *password*: _admin_.
+First step is to open the browser and navigate to link:http://localhost:8080/tag[ ,window="_blank"]. Login into the TAG dashboard using *username*: _admin_, *password*: _admin_.
 
 image::login.gif[""]
 
-=== Create a Client Account
+=== Create the Client Account
 
 Create the client account to identify the Streaming Website, following the steps below:
 
@@ -121,6 +121,7 @@ Fill the Account information with the following data:
 * *Username*: _streaming-website_
 * *Email*: _streaming-website@email.com_
 * *Full Name*: _Streaming Website_
+* *Roles*: _USA_
 
 image::create-client-account.png[""]
 
@@ -163,7 +164,7 @@ You will be redirected to the Account page with John's information.
 
 === Create a Route with the OAuth2 Security Profile
 
-Now let's create a secured OAuth2 route to the Microservice Movies and give access only to users that have the _Streaming-App-Owner_ role.
+Now let's create a secured OAuth2 route to the Movies Catalog Microservice and give access only to applications with the _USA_ role.
 
 On the Dashboard page execute the following steps:
 
@@ -173,13 +174,13 @@ On the Dashboard page execute the following steps:
 
 Then fill the form with the following data:
 
-* *Name*: _Streaming Movies Route_
+* *Name*: _Movies Catalog USA_
 * Add the *MOD_REWRITE* description
 ```
-RewriteRule "^/streaming-movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
+RewriteRule "^/movies-catalog$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
 ```
 * *Security Profiles*: _OAuth2 Profile_
-* *Roles*: _Streaming-App-Owner_
+* *Roles*: _USA_
 
 NOTE: If you are using OSX as the operating system, replace in *MOD_REWRITE* _localhost_ for _host.docker.internal_.
 
