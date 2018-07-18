@@ -197,8 +197,8 @@ image::test-window.png[""]
 
 Add OAuth2 Authentication with the following steps:
 
-* Click on `…` button
-* Select `Add OAuth 2.0`
+* Click on _…_ button
+* Select _Add OAuth 2.0_
 * Scroll down to the OAuth2 section
 * Fill *Grant Type* with _password_
 * Fill *Username* with _john_
