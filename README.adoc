@@ -146,12 +146,13 @@ You also need to create a user for the Streaming Website owner.
 
 Fill the Account information with the following data:
 
-* *Username*: _Alice_
-* *Email*: _alice@email.com_
-* *Full Name*: _Alice_
-* *Roles*: _Streaming-App-Owner_
+* *Username*: _John_
+* *Email*: _john@email.com_
+* *Full Name*: _John_
 
-You will be redirected to the Account page with Alice's information.
+image::create-user.png[""]
+
+You will be redirected to the Account page with John's information.
 
 * Click _..._
 * Select _Add password_
@@ -190,7 +191,7 @@ You can test the behavior of the TAG configuration directly from the Route scree
 * Click _..._
 * Click _Test_
 
-This will open the _Test Routes_ screen, thus set the *Resource URL* to _/streaming-movies_.
+This will open the _Test Routes_ screen, set the Scenario name to _movies streaming_ and the *Resource URL* to _/streaming-movies_.
 
 image::test-window.png[""]
 
@@ -200,20 +201,31 @@ Add OAuth2 Authentication with the following steps:
 * Select `Add OAuth 2.0`
 * Scroll down to the OAuth2 section
 * Fill *Grant Type* with _password_
-* Fill *Username* with _alice_
+* Fill *Username* with _john_
 * Fill *Password* with _abcde123_
 * Fill *Client Id* with _streaming-website_
 * Fill *Client Secret* with _12345678_
 
 image::test-window-with-oauth2.png[""]
 
-After that click _Test_. If everything was set up correctly, you will get a _200 OK_ in the Response, which means you were able to get a token with the provided credentials, and use this token to call the /streaming-movies route successfully.
-
-image::test-window-with-oauth2-200.png[""]
-
-If you remove the _Streaming-App-Owner_ role from Alice, you will see that the route will deny the request because the user doesn't have the required role to access the route.
+After that click _Test_. You will get back a 403 and the reason is that the user or client must have the role _Streaming-App-Owner_ to be authorized to access the route.
 
 image::test-window-with-oauth2-403.png[""]
+
+So now let's save the test scenario _movies streaming_.
+image::save_test.png[""]
+
+Then go back to John's account to add the role.
+* Go to _Dashboard_
+* Click _Accounts_
+* Click _John_
+* Add _Streaming-App-Owner_ to *Roles*
+
+Now go back to the route _Streaming Movies Route_, open the _Test Routes_ window and search for _streaming movies_. You will get saved information back, now click _Test_.
+
+You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the /streaming-movies, and were authorized to use the route successfully as you had the necessary role to do it. The request will be proxied and the microservice will return te catalog of movies for the Streaming Movie Website.
+
+image::test-window-with-oauth2-200.png[""]
 
 == Stop the Docker containers
 
