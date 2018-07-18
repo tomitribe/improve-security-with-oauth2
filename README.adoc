@@ -230,7 +230,7 @@ Then go to the route _Movies Catalog Route_:
 * Go to the _Dashboard_
 * Click _Routes_
 * Click _Movies Catalog Route_
-* Then _..._
+* Click _..._
 * Select _Test_
 
 In the Test Routes window, search for scenario _Movies Catalog_. You will get saved information back, now click _Test_.
