@@ -223,7 +223,7 @@ Then go back to John's account to add the role.
 
 Now go back to the route _Streaming Movies Route_, open the _Test Routes_ window and search for _streaming movies_. You will get saved information back, now click _Test_.
 
-You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the /streaming-movies, and were authorized to use the route successfully as you had the necessary role to do it. The request will be proxied and the microservice will return te catalog of movies for the Streaming Movie Website.
+You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the /streaming-movies, and were authorized to use the route successfully as you had the necessary role to do it. The request will be proxied and the microservice will return te catalog of movies for the Streaming Website.
 
 image::test-window-with-oauth2-200.png[""]
 
