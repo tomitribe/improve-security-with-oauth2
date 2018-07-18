@@ -102,13 +102,13 @@ Let's imagine that you are a TAG Administrator and have to give access to a Micr
 
 First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
 
-Login into the TAG dashboard using username: _admin_, password: _admin_.
+Login into the TAG dashboard using *username*: _admin_, *password*: _admin_.
 
 image::login.gif[""]
 
 === Create a Client Account
 
-Create the client account the Streaming Website is going to use, following the steps below:
+Create the client account to identify the Streaming Website, following the steps below:
 
 * Click on the _Accounts_
 * Click the _Plus button_ (+)
@@ -154,13 +154,13 @@ Fill the Account information with the following data:
 You will be redirected to the Account page with Alice's information.
 
 * Click _..._
-* Select Add password
+* Select _Add password_
 * Type password _abcde123_
 * Click _Save_
 
 === Create a Route with the OAuth2 Security Profile
 
-Now let's create a secured OAuth2 route to the Microservice Movies a give access only to users that have the _Streaming-App-Owner_ role.
+Now let's create a secured OAuth2 route to the Microservice Movies and give access only to users that have the _Streaming-App-Owner_ role.
 
 On the Dashboard page execute the following steps:
 
@@ -170,15 +170,15 @@ On the Dashboard page execute the following steps:
 
 Then fill the form with the following data:
 
-* Add the MOD_REWRITE description below
+* *Name*: _Streaming Movies Route_
+* Add the *MOD_REWRITE* description
 ```
 RewriteRule "^/streaming-movies$" "http://localhost:9090/movie-api/api/movies" [P,NE,auth]
 ```
-
-PS: If you are using OSX as the operating system, replace _localhost_ for _host.docker.internal_.
-
 * *Security Profiles*: _OAuth2 Profile_
 * *Roles*: _Streaming-App-Owner_
+
+NOTE: If you are using OSX as the operating system, replace in *MOD_REWRITE* _localhost_ for _host.docker.internal_.
 
 image::create-route.png[""]
 
@@ -199,6 +199,7 @@ Add OAuth2 Authentication with the following steps:
 * Click on `…` button
 * Select `Add OAuth 2.0`
 * Scroll down to the OAuth2 section
+* Fill *Grant Type* with _password_
 * Fill *Username* with _alice_
 * Fill *Password* with _abcde123_
 * Fill *Client Id* with _streaming-website_
