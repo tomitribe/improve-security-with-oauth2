@@ -169,7 +169,7 @@ Now let's create a secured OAuth2 route to the Movies Catalog Microservice and g
 On the Dashboard page execute the following steps:
 
 * Click on the _Routes_
-* Click the _Plus button_(+)
+* Click the _Plus button_ (+)
 * Select _MOD_REWRITE ROUTE_
 
 Then fill the form with the following data:
