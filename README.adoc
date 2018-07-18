@@ -214,20 +214,20 @@ After that click _Test_. You will get back a 403 and the reason is that the user
 
 image::test-window-with-oauth2-403.png[""]
 
-So now let's save the test scenario _Movies Catalog_.
+So now, scroll to the top and let's save the test scenario _Movies Catalog_ clicking
 
-image::save_test.png[""]
+image::save-test.png[""]
 
-Then go back to John's account to add the role.
+Then go back to streaming-website client account to add the role.
 
-* Go to _Dashboard_
+* Go to the _Dashboard_
 * Click _Accounts_
 * Click _John_
-* Add _Streaming-App-Owner_ to *Roles*
+* Add _USA_ to *Roles*
 
-Then go to the route _Streaming Movies Route_, open the _Test Routes_ window and search for _streaming movies_. You will get saved information back, now click _Test_.
+Then go to the route _Movies Catalog Route_, open the _Test Routes_ window and search for _Movies Catalog_. You will get saved information back, now click _Test_.
 
-You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the _/streaming-movies_, and were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and the microservice will return te catalog of movies for the Streaming Website.
+You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the _/movies-catalog_, and you were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and the microservice will return te catalog of movies for the Streaming Website.
 
 image::test-window-with-oauth2-200.png[""]
 
