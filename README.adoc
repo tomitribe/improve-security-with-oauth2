@@ -191,7 +191,7 @@ You can test the behavior of the TAG configuration directly from the Route scree
 * Click _..._
 * Click _Test_
 
-This will open the _Test Routes_ screen, set the Scenario name to _movies streaming_ and the *Resource URL* to _/streaming-movies_.
+This will open the _Test Routes_ screen, set the *Scenario name* to _movies streaming_ and the *Resource URL* to _/streaming-movies_.
 
 image::test-window.png[""]
 
@@ -213,9 +213,11 @@ After that click _Test_. You will get back a 403 and the reason is that the user
 image::test-window-with-oauth2-403.png[""]
 
 So now let's save the test scenario _movies streaming_.
+
 image::save_test.png[""]
 
 Then go back to John's account to add the role.
+
 * Go to _Dashboard_
 * Click _Accounts_
 * Click _John_
