@@ -106,7 +106,7 @@ _My name is John and as a streaming application owner, I want populate my Movie 
 
 _You as a TAG Administrator need to protected an existing Movie Catalog Microservice, this microservice must be available only for USA and accessible for the Movie Streaming Website._
 
-First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"]. Login into the TAG dashboard using *username*: admin , *password*: admin .
+First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"]. Login into the TAG dashboard using *username* admin , *password* admin .
 
 image::login.gif[""]
 
@@ -142,6 +142,8 @@ Use the following data in the _Add Client Secret_ window: +
 
 image::add-client-secret.png[""]
 
+=== Create the User Account
+
 You also need to create a user for the Streaming Website owner.
 
 * Go back to the _Accounts_
@@ -163,9 +165,10 @@ You will be redirected to the Account page with John's information.
 * Type password _abcde123_
 * Click _Save_
 
+Now you have both the client for the website configured and the user account for John also configured.
 === Create a secure route with the OAuth2 Security Profile
 
-Now let's create a secured OAuth2 route to the Movies Catalog Microservice and give access only to applications with the _USA_ role.
+Now let’s create a secured OAuth2 route to the Movies Catalog Microservice and give access only to applications with the _USA_ role. This means that, if an application has a role different than USA, for example BRA which stands for Brazil, it will not be able to access the route.
 
 On the Dashboard page execute the following steps:
 
@@ -189,7 +192,7 @@ image::create-route.png[""]
 
 After clicking _Save_ you will be on the page of your created route. You now have a route _/movies-catalog_ secured with OAuth2 and only calls from accounts with the role _USA_ will be proxied to the Movies Catalog Microservice.
 
-== Calling the Movies Catalog Route
+=== Calling the Movies Catalog Route
 You can test the behavior of the TAG configuration directly from the Route screen.
 
 * Click _..._
@@ -204,7 +207,7 @@ Add OAuth2 Authentication with the following steps:
 * Click _..._
 * Select _Add OAuth 2.0_
 * Scroll down to the OAuth2 section
-* Fill *Grant Type* with _password_
+* The *Grant Type* _password_ is already filled
 * Fill *Username* with _john_
 * Fill *Password* with _abcde123_
 * Fill *Client Id* with _streaming-website_
@@ -216,7 +219,7 @@ After that click _Test_. You will get back a http status *403* and the reason is
 
 image::test-window-with-oauth2-403.png[""]
 
-So now, scroll to the top and save the test scenario _Movies Catalog_ clicking
+So now, scroll to the top and save the test scenario _Movies Catalog_.
 
 image::save-test.png[""]
 
@@ -224,7 +227,7 @@ Then go back to streaming-website client account to add the role.
 
 * Go to the _Dashboard_
 * Click _Accounts_
-* Click _STREAMING WEBSITE _
+* Click _STREAMING WEBSITE_
 * Add _USA_ to *Roles*
 * Save
 
