@@ -236,7 +236,7 @@ Then go to the route _Movies Catalog Route_:
 
 In the Test Routes window, search for scenario _Movies Catalog_. You will get saved information back, now click _Test_.
 
-You will now receive a http status *200* in the response, which means you were able to get a token, use this token to call the _/movies-catalog_, and you were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and if you check the _PAYLOAD_, the microservice returned the catalog of movies for the Streaming Website.
+You will now receive a http status *200* in the response, which means you were able to get a token, use this token to call the _/movies-catalog_ and you were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and if you check the _PAYLOAD_, the microservice returned the catalog of movies for the Streaming Website.
 
 image::test-window-with-oauth2-200.png[""]
 
