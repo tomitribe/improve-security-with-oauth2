@@ -225,7 +225,15 @@ Then go back to streaming-website client account to add the role.
 * Click _John_
 * Add _USA_ to *Roles*
 
-Then go to the route _Movies Catalog Route_, open the _Test Routes_ window and search for _Movies Catalog_. You will get saved information back, now click _Test_.
+Then go to the route _Movies Catalog Route_:
+
+* Go to the _Dashboard_
+* Click _Routes_
+* Click _Movies Catalog Route_
+* Then _..._
+* Select _Test_
+
+In the Test Routes window, search for scenario _Movies Catalog_. You will get saved information back, now click _Test_.
 
 You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the _/movies-catalog_, and you were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and the microservice will return te catalog of movies for the Streaming Website.
 
