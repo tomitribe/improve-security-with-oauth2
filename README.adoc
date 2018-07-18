@@ -100,9 +100,9 @@ TAG emits the access tokens using the JWT format. The emitted tokens will have a
 
 To learn how to do it let's go through the following scenario:
 
-_As a streaming application owner and part of a company called Red, I want populate my Movie Streaming Website with a movies catalog, so users can have access to all the movies we can stream. This catalog is exclusive for the Red company and cannot be shared with other companies._
+_As a streaming application owner, I want populate my Movie Streaming Website with a movies catalog, so users can have access to all the movies we can stream. This catalog is exclusive for USA and cannot be shared with other countries._
 
-_You as a TAG Administrator need to protected an existing Movie Catalog Microservice, this microservice must be available only for the Red company and accessible for the Movie Streaming Website._
+_You as a TAG Administrator need to protected an existing Movie Catalog Microservice, this microservice must be available only for USA and accessible for the Movie Streaming Website._
 
 First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"]. Login into the TAG dashboard using *username*: _admin_, *password*: _admin_.
 
