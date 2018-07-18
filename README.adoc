@@ -106,7 +106,7 @@ _My name is John and as a streaming application owner, I want populate my Movie 
 
 _You as a TAG Administrator need to protected an existing Movie Catalog Microservice, this microservice must be available only for USA and accessible for the Movie Streaming Website._
 
-First step is to open the browser and navigate to link:http://localhost:8080/tag[ ,window="_blank"]. Login into the TAG dashboard using *username*: _admin_, *password*: _admin_.
+First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"]. Login into the TAG dashboard using *username*: admin , *password*: admin .
 
 image::login.gif[""]
 
