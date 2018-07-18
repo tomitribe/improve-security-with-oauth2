@@ -98,7 +98,7 @@ TAG emits the access tokens using the JWT format. The emitted tokens will have a
 
 == How to secure a microservice with the Tribestream API Gateway (TAG)
 
-Let's imagine you as a TAG Administrator have to give access to a Movie Streaming Website, and this website will consume a movies microservice to therefore get the catalog of movies.
+Let's imagine that you are a TAG Administrator and have to give access to a Microservice for a Movie Streaming Website. This website will consume the movies microservice, which will provide a catalog of movies.
 
 First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"].
 
