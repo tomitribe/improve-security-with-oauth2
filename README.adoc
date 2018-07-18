@@ -14,7 +14,6 @@ Time: 10 minutes
 * OAuth 2.0
 * JSON Web Tokens (JWT)
 * How to secure a microservice with the Tribestream API Gateway (TAG)
-* Authorization using roles
 
 == Prerequisites
 
@@ -26,7 +25,7 @@ Time: 10 minutes
 
 Before digging into OAuth2 using TAG you need start the docker images of ElasticSearch and Kibana, TAG and the Movie-Api app.
 
-=== Start the Movies Microservice
+=== Run the Movies Microservice container
 
 If you went through the _Tribestream Quickstart Guide_ you can reuse the _movie-api_ docker container. To start the movie-api execute the following command:
 ```
@@ -60,7 +59,7 @@ Connection: keep-alive
 Rambo"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9,"id":1,"title":"The Matrix"},{"comments":[],"year":1999,"director":"Syl","genrer":"Sci-Fi","rating":9,"id":51,"title":"The Matrix"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genrer":"Sci-Fi","rating":7,"id":3,"title":"Starship Troopers"},{"comments":[],"year":1997,"director":"Paul Verhoeven","genrer":"Sci-Fi","rating":7,"id":53,"title":"Starship Troopers"},{"comments":[],"year":1994,"director":"Roland Emmerich","genrer":"Sci-Fi","rating":7,"id":4,"title":"Stargate"},{"comments":[],"year":1994,"director":"Roland Emmerich","genrer":"Sci-Fi","rating":7,"id":54,"title":"Stargate"}]%
 ```
 
-=== Run the Tribestream API Gateway (TAG)
+=== Run the Tribestream API Gateway (TAG) container
 
 If you went through the _Tribestream Quickstart Guide_ you can reuse the _TAG_ docker container. To start TAG execute the following command:
 
