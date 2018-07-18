@@ -128,7 +128,7 @@ After clicking _Save_ you will be redirected to a page with all the _streaming-w
 
 Add a Client Secret with the following steps: +
 
-* Click the _…_
+* Click _..._
 * Select _Add Client Secret_ on the menu
 
 Use the following data in the _Add Client Secret_ window: +
@@ -148,7 +148,7 @@ You also need to create a user for the Streaming Website owner.
 
 Fill the Account information with the following data:
 
-* *Username*: _John_
+* *Username*: _john_
 * *Email*: _john@email.com_
 * *Full Name*: _John_
 
@@ -161,7 +161,7 @@ You will be redirected to the Account page with John's information.
 * Type password _abcde123_
 * Click _Save_
 
-=== Create a Route with the OAuth2 Security Profile
+=== Create a secure route with the OAuth2 Security Profile
 
 Now let's create a secured OAuth2 route to the Movies Catalog Microservice and give access only to applications with the _USA_ role.
 
@@ -199,7 +199,7 @@ image::test-window.png[""]
 
 Add OAuth2 Authentication with the following steps:
 
-* Click on _…_ button
+* Click _..._
 * Select _Add OAuth 2.0_
 * Scroll down to the OAuth2 section
 * Fill *Grant Type* with _password_
@@ -210,11 +210,11 @@ Add OAuth2 Authentication with the following steps:
 
 image::test-window-with-oauth2.png[""]
 
-After that click _Test_. You will get back a 403 and the reason is that the client must have the role _USA_ to be authorized to access the route.
+After that click _Test_. You will get back a http status *403* and the reason is that the client must have the role _USA_ to be authorized to access the route.
 
 image::test-window-with-oauth2-403.png[""]
 
-So now, scroll to the top and let's save the test scenario _Movies Catalog_ clicking
+So now, scroll to the top and save the test scenario _Movies Catalog_ clicking
 
 image::save-test.png[""]
 
@@ -222,20 +222,21 @@ Then go back to streaming-website client account to add the role.
 
 * Go to the _Dashboard_
 * Click _Accounts_
-* Click _John_
+* Click _STREAMING WEBSITE _
 * Add _USA_ to *Roles*
+* Save
 
 Then go to the route _Movies Catalog Route_:
 
 * Go to the _Dashboard_
 * Click _Routes_
-* Click _Movies Catalog Route_
+* Click _MOVIES CATALOG USA_
 * Click _..._
 * Select _Test_
 
 In the Test Routes window, search for scenario _Movies Catalog_. You will get saved information back, now click _Test_.
 
-You will now receive a _200_ in the response, which means you were able to get a token, you used this token to call the _/movies-catalog_, and you were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and the microservice will return te catalog of movies for the Streaming Website.
+You will now receive a http status *200* in the response, which means you were able to get a token, use this token to call the _/movies-catalog_, and you were authorized to use the route successfully as you had the necessary role to do it. Therefore the request will be proxied and if you check the _PAYLOAD_, the microservice returned the catalog of movies for the Streaming Website.
 
 image::test-window-with-oauth2-200.png[""]
 
