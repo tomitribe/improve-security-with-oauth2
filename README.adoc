@@ -87,7 +87,7 @@ INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 18348 m
 ```
 
 == What is OAuth 2.0
-OAuth2 is an open standard for authorization that enables client applications to access server resources on behalf of a specific Resource Owner which also enables the owner to authorize limited third-party access to their server resources without sharing their credentials.
+OAuth 2.0 is an authorization framework that enables a third-party application to obtain limited access to an HTTP service, either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP service, or by allowing the third-party application to obtain access on its own behalf.
 
 The Tribestream API Gateway will help you to easily configure OAuth2 to protect your microservices. TAG issues tokens for the client applications on behalf of a Resource Owner, these tokens added to the request can be used to access the protected microservices.
 
