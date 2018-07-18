@@ -210,7 +210,7 @@ Add OAuth2 Authentication with the following steps:
 
 image::test-window-with-oauth2.png[""]
 
-After that click _Test_. You will get back a 403 and the reason is that the user or client must have the role _Streaming-App-Owner_ to be authorized to access the route.
+After that click _Test_. You will get back a 403 and the reason is that the client must have the role _USA_ to be authorized to access the route.
 
 image::test-window-with-oauth2-403.png[""]
 
