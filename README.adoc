@@ -23,7 +23,7 @@ Time: 10 minutes
 
 == Run Docker Containers
 
-Before digging into OAuth2 using TAG you need start the docker images of ElasticSearch and Kibana, TAG and the Movie-Api app.
+Before digging into OAuth2 using TAG you need run the docker containers of the Movies Microservice and TAG.
 
 === Run the Movies Microservice container
 
