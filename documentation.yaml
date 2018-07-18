@@ -4,6 +4,6 @@ documentation:
 
   - doc_root: 'README.adoc'
     name: 'Examples'
-    display_name: 'Secure Microservices with OAuth 2.0 and JWT'
-    public_path: 'en/api-gateway/secure-microservices-with-oauth2-and-jwt'
+    display_name: 'Secure Microservices with OAuth 2.0 and JWT v2'
+    public_path: 'en/api-gateway/secure-microservices-with-oauth2-and-jwt-v2'
     single_page: 'true'
