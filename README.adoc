@@ -121,7 +121,6 @@ Fill the Account information with the following data:
 * *Username*: _streaming-website_
 * *Email*: _streaming-website@email.com_
 * *Full Name*: _Streaming Website_
-* *Roles*: _USA_
 
 image::create-client-account.png[""]
 
@@ -186,15 +185,15 @@ NOTE: If you are using OSX as the operating system, replace in *MOD_REWRITE* _lo
 
 image::create-route.png[""]
 
-After clicking _Save_ you will be on the page of your created route. You now have a route _/streaming-movies_ secured with OAuth2 and only calls from accounts with the role _Streaming-App-Owner_ will be proxied to the movies microservice.
+After clicking _Save_ you will be on the page of your created route. You now have a route _/movies-catalog_ secured with OAuth2 and only calls from accounts with the role _USA_ will be proxied to the Movies Catalog Microservice.
 
-== Calling the Streaming Movies Route
+== Calling the Movies Catalog Route
 You can test the behavior of the TAG configuration directly from the Route screen.
 
 * Click _..._
 * Click _Test_
 
-This will open the _Test Routes_ screen, set the *Scenario name* to _movies streaming_ and the *Resource URL* to _/streaming-movies_.
+This will open the _Test Routes_ screen, set the *Scenario name* to _Movies Catalog_ and the *Resource URL* to _/movies-catalog_.
 
 image::test-window.png[""]
 
@@ -215,7 +214,7 @@ After that click _Test_. You will get back a 403 and the reason is that the user
 
 image::test-window-with-oauth2-403.png[""]
 
-So now let's save the test scenario _movies streaming_.
+So now let's save the test scenario _Movies Catalog_.
 
 image::save_test.png[""]
 
