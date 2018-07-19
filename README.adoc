@@ -166,6 +166,7 @@ You will be redirected to the Account page with John's information.
 * Click _Save_
 
 Now you have both the client for the website configured and the user account for John also configured.
+
 === Create a secure route with the OAuth2 Security Profile
 
 Now let’s create a secured OAuth2 route to the Movies Catalog Microservice and give access only to applications with the _USA_ role. This means that, if an application has a role different than USA, for example BRA which stands for Brazil, it will not be able to access the route.
@@ -193,6 +194,7 @@ image::create-route.png[""]
 After clicking _Save_ you will be on the page of your created route. You now have a route _/movies-catalog_ secured with OAuth2 and only calls from accounts with the role _USA_ will be proxied to the Movies Catalog Microservice.
 
 === Calling the Movies Catalog Route
+
 You can test the behavior of the TAG configuration directly from the Route screen.
 
 * Click _..._
