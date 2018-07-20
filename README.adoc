@@ -96,7 +96,9 @@ image::OAuth2.png[""]
 == What is JSON Web Token (JWT)?
 JSON Web Token is an open standard that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed.
 
-TAG emits the access tokens using the JWT format. The emitted token is a base64 hash of a JSON that has a header, a payload with the claims and the signature to make sure the token was not modified. TAG will receive the JWT access tokens to authorize incoming requests to existing routes.
+TAG emits a JWT access tokens. The token is a Base64 encoded JSON that has a header, a payload with the claims and the signature to guarantee data integrity.
+
+image::JWT.png[""]
 
 == How to secure a microservice with the Tribestream API Gateway (TAG)
 
@@ -105,6 +107,8 @@ To learn how to do it let's go through the following scenario:
 _My name is John and as a streaming application owner, I want populate my Movie Streaming Website with a movies catalog, so users can have access to all the movies we can stream. This catalog is exclusive for USA and cannot be shared with other countries._
 
 _You as a TAG Administrator need to protected an existing Movie Catalog Microservice, this microservice must be available only for USA and accessible for the Movie Streaming Website._
+
+image::scenario.png[""]
 
 First step is to open the browser and navigate to link:http://localhost:8080/tag[,window="_blank"]. Login into the TAG dashboard using *username* admin , *password* admin .
 
