@@ -11,8 +11,8 @@ Time: 10 minutes
 
 == Learning objectives
 
-* OAuth 2.0
-* JSON Web Tokens (JWT)
+* Basics of OAuth 2.0
+* Introduction to JSON Web Token (JWT)
 * How to secure a microservice with the Tribestream API Gateway (TAG)
 
 == Prerequisites
